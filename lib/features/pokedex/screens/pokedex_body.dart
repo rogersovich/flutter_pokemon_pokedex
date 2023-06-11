@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pokemon_pokedex/constants/color_constant.dart';
 
-import '../../../utils/widget_utils.dart';
+import '../../../utils/widget_util.dart';
 
 class PokedexBody extends StatefulWidget {
   const PokedexBody({super.key});

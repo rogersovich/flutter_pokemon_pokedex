@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../size_config.dart';
-import '../constants/color_constant.dart';
 
 Text builTextNormal(BuildContext context, String text,
-    {Color color = Colors.black, double fontSize = 12}) {
+    {Color color = Colors.black, double fontSize = 14}) {
   return Text(text,
       textAlign: TextAlign.left,
       style: TextStyle(
           color: color,
-          fontSize: getProportionateScreenHeight(context, 12),
-          decoration: TextDecoration.lineThrough,
-          decorationColor: kWhiteColor));
+          fontSize: getProportionateScreenHeight(context, fontSize)));
 }
 
 Image buildimages(BuildContext context, String url,

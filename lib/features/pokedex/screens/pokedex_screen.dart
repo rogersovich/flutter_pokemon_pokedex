@@ -16,7 +16,9 @@ class _PokedexScreenState extends State<PokedexScreen> {
       appBar: AppBar(
         title: Text(
           "Ini Pokemon",
-          style: TextStyle(color: kWhiteColor),
+          style: TextStyle(
+            color: kWhiteColor,
+          ),
         ),
       ),
       body: const PokedexBody(),
