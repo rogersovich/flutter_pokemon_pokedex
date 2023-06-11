@@ -3,7 +3,6 @@ import 'package:flutter_pokemon_pokedex/constants/color_constant.dart';
 import 'package:flutter_pokemon_pokedex/features/pokedex/screens/pokedex_body.dart';
 
 class PokedexScreen extends StatefulWidget {
-  static String routeName = "/pokedex";
   const PokedexScreen({super.key});
 
   @override

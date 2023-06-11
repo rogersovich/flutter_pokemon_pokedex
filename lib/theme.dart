@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pokemon_pokedex/constants/color_constant.dart';
 
+import 'constants/font_constant.dart';
+
 ThemeData customTheme() {
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
-    fontFamily: "Arial",
+    fontFamily: FontConstants.robotoRegular,
     appBarTheme: appBarTheme(),
     textTheme: textTheme(),
     inputDecorationTheme: inputDecorationTheme(),

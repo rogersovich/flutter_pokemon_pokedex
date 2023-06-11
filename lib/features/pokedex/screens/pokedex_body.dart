@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pokemon_pokedex/constants/color_constant.dart';
 
+import '../../../utils/widget_utils.dart';
+
 class PokedexBody extends StatefulWidget {
   const PokedexBody({super.key});
 
@@ -12,10 +14,8 @@ class _PokedexBodyState extends State<PokedexBody> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-        'kucing woi',
-        style: TextStyle(color: kPrimaryColor),
-      ),
+      child:
+          builTextNormal(context, 'Ikan Hiu makan permen', color: kBlackColor),
     );
   }
 }
