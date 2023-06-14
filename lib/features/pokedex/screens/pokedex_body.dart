@@ -13,9 +13,14 @@ class PokedexBody extends StatefulWidget {
 class _PokedexBodyState extends State<PokedexBody> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child:
-          builTextNormal(context, 'Ikan Hiu makan permen', color: kBlackColor),
+    return Column(
+      children: [
+        Center(
+          child: builTextNormal(context, 'Ikan Hiu makan baso',
+              color: kBlackColor),
+        ),
+        buildButton(context, 'ini button')
+      ],
     );
   }
 }
