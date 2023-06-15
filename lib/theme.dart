@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pokemon_pokedex/constants/color_constant.dart';
 
+import 'constants/app_constant.dart';
 import 'constants/font_constant.dart';
 
 ThemeData customTheme() {
@@ -9,6 +10,7 @@ ThemeData customTheme() {
     fontFamily: FontConstants.robotoRegular,
     appBarTheme: appBarTheme(),
     textTheme: textTheme(),
+    textButtonTheme: textButtonTheme(),
     inputDecorationTheme: inputDecorationTheme(),
     visualDensity: VisualDensity.adaptivePlatformDensity,
   );
@@ -30,9 +32,31 @@ InputDecorationTheme inputDecorationTheme() {
 
 TextTheme textTheme() {
   return TextTheme(
-    bodyMedium: TextStyle(color: kBlackColor),
-    bodyLarge: TextStyle(color: kBlackColor),
-  );
+      bodyMedium: TextStyle(
+          color: kBlackColor, letterSpacing: AppConstants.defaultLetterSpacing),
+      bodyLarge: TextStyle(
+          color: kBlackColor, letterSpacing: AppConstants.defaultLetterSpacing),
+      headlineMedium:
+          const TextStyle(letterSpacing: AppConstants.defaultLetterSpacing),
+      titleSmall:
+          const TextStyle(letterSpacing: AppConstants.defaultLetterSpacing),
+      titleMedium:
+          const TextStyle(letterSpacing: AppConstants.defaultLetterSpacing),
+      titleLarge:
+          const TextStyle(letterSpacing: AppConstants.defaultLetterSpacing),
+      labelSmall:
+          const TextStyle(letterSpacing: AppConstants.defaultLetterSpacing),
+      labelMedium:
+          const TextStyle(letterSpacing: AppConstants.defaultLetterSpacing),
+      labelLarge:
+          const TextStyle(letterSpacing: AppConstants.defaultLetterSpacing));
+}
+
+TextButtonThemeData textButtonTheme() {
+  return TextButtonThemeData(
+      style: TextButton.styleFrom(
+          textStyle: const TextStyle(
+              letterSpacing: AppConstants.defaultLetterSpacing)));
 }
 
 AppBarTheme appBarTheme() {
