@@ -1,33 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_pokemon_pokedex/constants/app_constant.dart';
 import 'package:flutter_pokemon_pokedex/constants/color_constant.dart';
+import '../constants/style_constant.dart';
 import '../size_config.dart';
-
-// convert to font weight
-FontWeight convertToFontWeight({int weight = 400}) {
-  switch (weight) {
-    case 100:
-      return FontWeight.w100;
-    case 200:
-      return FontWeight.w200;
-    case 300:
-      return FontWeight.w300;
-    case 400:
-      return FontWeight.w400;
-    case 500:
-      return FontWeight.w500;
-    case 600:
-      return FontWeight.w600;
-    case 700:
-      return FontWeight.w700;
-    case 800:
-      return FontWeight.w800;
-    case 900:
-      return FontWeight.w900;
-    default:
-      return FontWeight.normal;
-  }
-}
 
 Text builTextNormal(BuildContext context, String text,
     {Color color = Colors.black, double fontSize = 14}) {
@@ -73,31 +47,6 @@ SizedBox buildSpacing(BuildContext context, {double height = 10}) {
 }
 
 // TEXT BUTTON
-ButtonStyle textButtonStyle(
-    BuildContext context,
-    bool block,
-    double width,
-    double height,
-    double fontSize,
-    FontWeight fontWeight,
-    Color color,
-    double px,
-    double py,
-    double rounded) {
-  return TextButton.styleFrom(
-    foregroundColor: color,
-    minimumSize: block ? Size.fromHeight(height) : Size(width, height),
-    textStyle: TextStyle(
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        letterSpacing: AppConstants.defaultLetterSpacing),
-    padding: EdgeInsets.symmetric(horizontal: px, vertical: py),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(rounded)),
-    ),
-  );
-}
-
 TextButton buildTextButton(BuildContext context, String text,
     {double rounded = 3,
     bool block = false,
@@ -152,34 +101,6 @@ TextButton buildTextButton(BuildContext context, String text,
 }
 
 // EVELATED BUTTON
-ButtonStyle elevatedButtonStyle(
-    BuildContext context,
-    bool block,
-    double width,
-    double height,
-    double fontSize,
-    FontWeight fontWeight,
-    Color color,
-    Color bgColor,
-    double px,
-    double py,
-    double rounded) {
-  return TextButton.styleFrom(
-    foregroundColor: color,
-    backgroundColor: bgColor,
-    shadowColor: Colors.transparent,
-    minimumSize: block ? Size.fromHeight(height) : Size(width, height),
-    textStyle: TextStyle(
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        letterSpacing: AppConstants.defaultLetterSpacing),
-    padding: EdgeInsets.symmetric(horizontal: px, vertical: py),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(rounded)),
-    ),
-  );
-}
-
 ElevatedButton buildElevatedButton(BuildContext context, String text,
     {double rounded = 3,
     bool block = false,
