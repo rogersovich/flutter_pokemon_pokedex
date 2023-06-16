@@ -20,8 +20,8 @@ class _PokedexBodyState extends State<PokedexBody> {
           child: builTextNormal(context, 'Ikan Hiu makan baso',
               color: kBlackColor),
         ),
-        buildButton(context, 'Submit Gass', onPressed: () {}),
-        buildButton(context, 'Submit Icon', icon: Icons.access_alarm,
+        buildTextButton(context, 'Submit Gass', onPressed: () {}),
+        buildTextButton(context, 'Submit Icon', icon: Icons.access_alarm,
             onPressed: () {
           if (kDebugMode) {
             print('Button pressed!');
@@ -31,6 +31,11 @@ class _PokedexBodyState extends State<PokedexBody> {
             print('Button Long Pressed');
           }
         }),
+        buildDivider(context),
+        buildElevatedButton(context, 'Elevated Button', onPressed: () {}),
+        buildSpacing(context),
+        buildElevatedButton(context, 'Elevate Icon',
+            icon: Icons.youtube_searched_for, rounded: 12, onPressed: () {})
       ],
     );
   }

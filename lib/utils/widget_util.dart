@@ -47,6 +47,32 @@ Image buildImages(BuildContext context, String url,
   );
 }
 
+// DIVIDER
+Divider buildDivider(
+  BuildContext context, {
+  Color? color,
+  double height = 30,
+  double thickness = 0.1,
+  double indent = 15,
+  double endIndent = 15,
+}) {
+  return Divider(
+    color: color ?? kBlackColor,
+    thickness: thickness,
+    height: height,
+    indent: indent,
+    endIndent: endIndent,
+  );
+}
+
+// VERTICAL SPACING
+SizedBox buildSpacing(BuildContext context, {double height = 10}) {
+  return SizedBox(
+    height: getProportionateScreenHeight(context, height),
+  );
+}
+
+// TEXT BUTTON
 ButtonStyle textButtonStyle(
     BuildContext context,
     bool block,
@@ -72,7 +98,7 @@ ButtonStyle textButtonStyle(
   );
 }
 
-TextButton buildButton(BuildContext context, String text,
+TextButton buildTextButton(BuildContext context, String text,
     {double rounded = 3,
     bool block = false,
     double width = 60,
@@ -90,7 +116,7 @@ TextButton buildButton(BuildContext context, String text,
         onLongPress: onLongPress,
         icon: Icon(
           icon,
-          color: color == null ? kPrimaryColor : Colors.blue,
+          color: color ?? kPrimaryColor,
           size: getProportionateScreenHeight(context, fontSize),
         ),
         style: textButtonStyle(
@@ -100,7 +126,7 @@ TextButton buildButton(BuildContext context, String text,
             getProportionateScreenHeight(context, height),
             getProportionateScreenHeight(context, fontSize),
             convertToFontWeight(weight: 500),
-            color == null ? kPrimaryColor : Colors.blue,
+            color ?? kPrimaryColor,
             getProportionateScreenHeight(context, padding.horizontal),
             getProportionateScreenHeight(context, padding.vertical),
             getProportionateScreenHeight(context, rounded)),
@@ -116,7 +142,92 @@ TextButton buildButton(BuildContext context, String text,
           getProportionateScreenHeight(context, height),
           getProportionateScreenHeight(context, fontSize),
           convertToFontWeight(weight: 500),
-          color == null ? kPrimaryColor : Colors.blue,
+          color ?? kPrimaryColor,
+          getProportionateScreenHeight(context, padding.horizontal),
+          getProportionateScreenHeight(context, padding.vertical),
+          getProportionateScreenHeight(context, rounded)),
+      child: Text(text),
+    );
+  }
+}
+
+// EVELATED BUTTON
+ButtonStyle elevatedButtonStyle(
+    BuildContext context,
+    bool block,
+    double width,
+    double height,
+    double fontSize,
+    FontWeight fontWeight,
+    Color color,
+    Color bgColor,
+    double px,
+    double py,
+    double rounded) {
+  return TextButton.styleFrom(
+    foregroundColor: color,
+    backgroundColor: bgColor,
+    shadowColor: Colors.transparent,
+    minimumSize: block ? Size.fromHeight(height) : Size(width, height),
+    textStyle: TextStyle(
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        letterSpacing: AppConstants.defaultLetterSpacing),
+    padding: EdgeInsets.symmetric(horizontal: px, vertical: py),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(rounded)),
+    ),
+  );
+}
+
+ElevatedButton buildElevatedButton(BuildContext context, String text,
+    {double rounded = 3,
+    bool block = false,
+    double width = 60,
+    double height = 30,
+    double fontSize = 12,
+    FontWeight? fontWeight,
+    Color? color,
+    Color? bgColor,
+    EdgeInsets padding = const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+    IconData? icon,
+    required VoidCallback onPressed,
+    VoidCallback? onLongPress}) {
+  if (icon != null) {
+    return ElevatedButton.icon(
+        onPressed: onPressed,
+        onLongPress: onLongPress,
+        icon: Icon(
+          icon,
+          color: color ?? Colors.white,
+          size: getProportionateScreenHeight(context, fontSize),
+        ),
+        style: elevatedButtonStyle(
+            context,
+            block,
+            getProportionateScreenHeight(context, width),
+            getProportionateScreenHeight(context, height),
+            getProportionateScreenHeight(context, fontSize),
+            convertToFontWeight(weight: 500),
+            color ?? Colors.white,
+            bgColor ?? kPrimaryColor,
+            getProportionateScreenHeight(context, padding.horizontal),
+            getProportionateScreenHeight(context, padding.vertical),
+            getProportionateScreenHeight(context, rounded)),
+        label: Text(text));
+  } else {
+    return ElevatedButton(
+      onPressed: onPressed,
+      onLongPress: onLongPress,
+      style: elevatedButtonStyle(
+          context,
+          block,
+          getProportionateScreenHeight(context, width),
+          getProportionateScreenHeight(context, height),
+          getProportionateScreenHeight(context, fontSize),
+          convertToFontWeight(weight: 500),
+          color ?? Colors.white,
+          bgColor ?? kPrimaryColor,
           getProportionateScreenHeight(context, padding.horizontal),
           getProportionateScreenHeight(context, padding.vertical),
           getProportionateScreenHeight(context, rounded)),
