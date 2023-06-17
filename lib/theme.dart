@@ -10,7 +10,6 @@ ThemeData customTheme() {
     fontFamily: FontConstants.robotoRegular,
     appBarTheme: appBarTheme(),
     textTheme: textTheme(),
-    textButtonTheme: textButtonTheme(),
     inputDecorationTheme: inputDecorationTheme(),
     visualDensity: VisualDensity.adaptivePlatformDensity,
   );
@@ -50,13 +49,6 @@ TextTheme textTheme() {
           const TextStyle(letterSpacing: AppConstants.defaultLetterSpacing),
       labelLarge:
           const TextStyle(letterSpacing: AppConstants.defaultLetterSpacing));
-}
-
-TextButtonThemeData textButtonTheme() {
-  return TextButtonThemeData(
-      style: TextButton.styleFrom(
-          textStyle: const TextStyle(
-              letterSpacing: AppConstants.defaultLetterSpacing)));
 }
 
 AppBarTheme appBarTheme() {

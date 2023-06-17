@@ -21,7 +21,7 @@ class _PokedexScreenState extends State<PokedexScreen> {
           ),
         ),
       ),
-      body: const PokedexBody(),
+      body: const SafeArea(child: PokedexBody()),
     );
   }
 }

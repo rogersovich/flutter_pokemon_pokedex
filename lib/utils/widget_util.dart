@@ -4,7 +4,7 @@ import '../constants/style_constant.dart';
 import '../size_config.dart';
 
 Text builTextNormal(BuildContext context, String text,
-    {Color color = Colors.black, double fontSize = 14}) {
+    {Color color = Colors.black, double fontSize = 8}) {
   return Text(text,
       textAlign: TextAlign.left,
       style: TextStyle(
@@ -25,7 +25,7 @@ Image buildImages(BuildContext context, String url,
 Divider buildDivider(
   BuildContext context, {
   Color? color,
-  double height = 30,
+  double height = 20,
   double thickness = 0.1,
   double indent = 15,
   double endIndent = 15,
@@ -40,9 +40,18 @@ Divider buildDivider(
 }
 
 // VERTICAL SPACING
-SizedBox buildSpacing(BuildContext context, {double height = 10}) {
+SizedBox buildSpacing(BuildContext context, {double height = 4}) {
   return SizedBox(
     height: getProportionateScreenHeight(context, height),
+  );
+}
+
+Icon iconButtonCustom(BuildContext context, IconData icon, Color? color,
+    double fontSize, VoidCallback? onPressed) {
+  return Icon(
+    icon,
+    color: onPressed != null ? color ?? kPrimaryColor : null,
+    size: getProportionateScreenHeight(context, fontSize),
   );
 }
 
@@ -50,24 +59,21 @@ SizedBox buildSpacing(BuildContext context, {double height = 10}) {
 TextButton buildTextButton(BuildContext context, String text,
     {double rounded = 3,
     bool block = false,
-    double width = 60,
-    double height = 30,
-    double fontSize = 12,
+    double width = 50,
+    double height = 15,
+    double fontSize = 6,
     FontWeight? fontWeight,
     Color? color,
-    EdgeInsets padding = const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+    EdgeInsets padding = const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
     IconData? icon,
-    required VoidCallback onPressed,
+    required VoidCallback? onPressed,
     VoidCallback? onLongPress}) {
   if (icon != null) {
     return TextButton.icon(
         onPressed: onPressed,
         onLongPress: onLongPress,
-        icon: Icon(
-          icon,
-          color: color ?? kPrimaryColor,
-          size: getProportionateScreenHeight(context, fontSize),
-        ),
+        icon:
+            iconButtonCustom(context, icon, kPrimaryColor, fontSize, onPressed),
         style: textButtonStyle(
             context,
             block,
@@ -104,25 +110,23 @@ TextButton buildTextButton(BuildContext context, String text,
 ElevatedButton buildElevatedButton(BuildContext context, String text,
     {double rounded = 3,
     bool block = false,
-    double width = 60,
-    double height = 30,
-    double fontSize = 12,
+    double width = 50,
+    double height = 15,
+    double fontSize = 6,
     FontWeight? fontWeight,
     Color? color,
     Color? bgColor,
-    EdgeInsets padding = const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+    Color? shadowColor,
+    double elevation = 0,
+    EdgeInsets padding = const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
     IconData? icon,
-    required VoidCallback onPressed,
+    required VoidCallback? onPressed,
     VoidCallback? onLongPress}) {
   if (icon != null) {
     return ElevatedButton.icon(
         onPressed: onPressed,
         onLongPress: onLongPress,
-        icon: Icon(
-          icon,
-          color: color ?? Colors.white,
-          size: getProportionateScreenHeight(context, fontSize),
-        ),
+        icon: iconButtonCustom(context, icon, kWhiteColor, fontSize, onPressed),
         style: elevatedButtonStyle(
             context,
             block,
@@ -130,11 +134,13 @@ ElevatedButton buildElevatedButton(BuildContext context, String text,
             getProportionateScreenHeight(context, height),
             getProportionateScreenHeight(context, fontSize),
             convertToFontWeight(weight: 500),
-            color ?? Colors.white,
-            bgColor ?? kPrimaryColor,
+            onPressed != null ? color ?? kWhiteColor : null,
+            onPressed != null ? bgColor ?? kPrimaryColor : null,
             getProportionateScreenHeight(context, padding.horizontal),
             getProportionateScreenHeight(context, padding.vertical),
-            getProportionateScreenHeight(context, rounded)),
+            getProportionateScreenHeight(context, rounded),
+            shadowColor,
+            elevation),
         label: Text(text));
   } else {
     return ElevatedButton(
@@ -147,8 +153,64 @@ ElevatedButton buildElevatedButton(BuildContext context, String text,
           getProportionateScreenHeight(context, height),
           getProportionateScreenHeight(context, fontSize),
           convertToFontWeight(weight: 500),
-          color ?? Colors.white,
-          bgColor ?? kPrimaryColor,
+          onPressed != null ? color ?? kWhiteColor : null,
+          onPressed != null ? bgColor ?? kPrimaryColor : null,
+          getProportionateScreenHeight(context, padding.horizontal),
+          getProportionateScreenHeight(context, padding.vertical),
+          getProportionateScreenHeight(context, rounded),
+          shadowColor,
+          elevation),
+      child: Text(text),
+    );
+  }
+}
+
+// OUTLINED BUTTON
+OutlinedButton buildOutlinedButton(BuildContext context, String text,
+    {double rounded = 3,
+    bool block = false,
+    double width = 50,
+    double height = 15,
+    double fontSize = 6,
+    FontWeight? fontWeight,
+    Color? color,
+    Color? bgColor,
+    EdgeInsets padding = const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+    IconData? icon,
+    required VoidCallback? onPressed,
+    VoidCallback? onLongPress}) {
+  if (icon != null) {
+    return OutlinedButton.icon(
+        onPressed: onPressed,
+        onLongPress: onLongPress,
+        icon:
+            iconButtonCustom(context, icon, kPrimaryColor, fontSize, onPressed),
+        style: outlinedButtonStyle(
+            context,
+            block,
+            getProportionateScreenHeight(context, width),
+            getProportionateScreenHeight(context, height),
+            getProportionateScreenHeight(context, fontSize),
+            convertToFontWeight(weight: 500),
+            color ?? kPrimaryColor,
+            bgColor ?? Colors.transparent,
+            getProportionateScreenHeight(context, padding.horizontal),
+            getProportionateScreenHeight(context, padding.vertical),
+            getProportionateScreenHeight(context, rounded)),
+        label: Text(text));
+  } else {
+    return OutlinedButton(
+      onPressed: onPressed,
+      onLongPress: onLongPress,
+      style: outlinedButtonStyle(
+          context,
+          block,
+          getProportionateScreenHeight(context, width),
+          getProportionateScreenHeight(context, height),
+          getProportionateScreenHeight(context, fontSize),
+          convertToFontWeight(weight: 500),
+          color ?? kPrimaryColor,
+          bgColor ?? Colors.transparent,
           getProportionateScreenHeight(context, padding.horizontal),
           getProportionateScreenHeight(context, padding.vertical),
           getProportionateScreenHeight(context, rounded)),

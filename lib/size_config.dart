@@ -38,9 +38,9 @@ double getProportionateScreenHeight(BuildContext context, double inputHeight) {
   SizeConfig config = SizeConfig();
   config.init(context);
 
-  double screenWidth = config.screenWidth;
+  double screenHeight = config.screenHeight;
   // 375 is the layout width that designer use
-  return (inputHeight / 375.0) * screenWidth;
+  return (inputHeight / 375.0) * screenHeight;
 }
 
 // Get the proportionate height as per screen size
