@@ -12,16 +12,42 @@ Text builTextNormal(BuildContext context, String text,
           fontSize: getProportionateScreenHeight(context, fontSize)));
 }
 
-Image buildImages(BuildContext context, String url,
-    {double width = 50, double height = 50}) {
+//* IMAGE
+Widget buildImages(BuildContext context, String url,
+    {double width = 50,
+    double height = 50,
+    BoxFit fit = BoxFit.contain,
+    double? rounded}) {
+  var widthImg = getProportionateScreenHeight(context, width);
+  var heightImg = getProportionateScreenHeight(context, height);
+
   return Image.asset(
     url,
-    width: getProportionateScreenWidth(context, width),
-    height: getProportionateScreenHeight(context, height),
+    width: widthImg,
+    height: heightImg,
+    fit: fit,
+    semanticLabel: "Foto Kucing",
   );
 }
 
-// DIVIDER
+//* AVATAR
+Widget buildAvatar(BuildContext context, String avatar,
+    {double width = 50, double height = 50, double? rounded, String? title}) {
+  var widthImg = getProportionateScreenHeight(context, width);
+  var heightImg = getProportionateScreenHeight(context, height);
+  return Container(
+    height: heightImg,
+    width: widthImg,
+    decoration: BoxDecoration(color: Colors.amberAccent),
+    child: CircleAvatar(
+      radius: 10,
+      backgroundImage: AssetImage(avatar),
+      child: title != null ? Text(title) : null,
+    ),
+  );
+}
+
+//* DIVIDER
 Divider buildDivider(
   BuildContext context, {
   Color? color,
@@ -39,7 +65,7 @@ Divider buildDivider(
   );
 }
 
-// VERTICAL SPACING
+//* VERTICAL SPACING
 SizedBox buildSpacing(BuildContext context, {double height = 4}) {
   return SizedBox(
     height: getProportionateScreenHeight(context, height),
@@ -55,7 +81,7 @@ Icon iconButtonCustom(BuildContext context, IconData icon, Color? color,
   );
 }
 
-// TEXT BUTTON
+//* TEXT BUTTON
 TextButton buildTextButton(BuildContext context, String text,
     {double rounded = 3,
     bool block = false,
@@ -106,7 +132,7 @@ TextButton buildTextButton(BuildContext context, String text,
   }
 }
 
-// EVELATED BUTTON
+//* EVELATED BUTTON
 ElevatedButton buildElevatedButton(BuildContext context, String text,
     {double rounded = 3,
     bool block = false,
@@ -165,7 +191,7 @@ ElevatedButton buildElevatedButton(BuildContext context, String text,
   }
 }
 
-// OUTLINED BUTTON
+//* OUTLINED BUTTON
 OutlinedButton buildOutlinedButton(BuildContext context, String text,
     {double rounded = 3,
     bool block = false,

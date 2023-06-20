@@ -27,15 +27,10 @@ class _PokedexBodyState extends State<PokedexBody> {
           ),
           buildTextButton(context, 'Submit Gass', onPressed: () {}),
           buildElevatedButton(context, 'Elevated Button', onPressed: () {}),
-          buildElevatedButton(context, 'Elevate Icon',
-              icon: Icons.youtube_searched_for,
-              rounded: 12,
-              bgColor: Colors.red,
-              onPressed: null),
           buildOutlinedButton(context, 'Outlined', onPressed: () {}),
-          buildOutlinedButton(context, 'Outlined Disabled', onPressed: null),
-          buildOutlinedButton(context, 'Outlined',
-              icon: Icons.accessible_sharp, onPressed: null),
+          buildImages(context, 'assets/images/kucing.jpg',
+              width: 60, height: 60, rounded: 8),
+          buildAvatar(context, 'assets/images/kucing.jpg', title: 'HELLOW')
         ],
       ),
     );
