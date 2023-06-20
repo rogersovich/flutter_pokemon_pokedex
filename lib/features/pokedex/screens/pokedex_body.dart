@@ -30,7 +30,7 @@ class _PokedexBodyState extends State<PokedexBody> {
           buildOutlinedButton(context, 'Outlined', onPressed: () {}),
           buildImages(context, 'assets/images/kucing.jpg',
               width: 60, height: 60, rounded: 8, shadow: true),
-          buildAvatar(context, 'https://picsum.photos/seed/picsum/200/300', title: 'AS',),
+          buildAvatar(context, 'https://picsum.photos/seed/picsum/200/300', title: 'AX',),
          
         ],
       ),
