@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../../utils/widget_util.dart';
+import 'package:flutter_pokemon_pokedex/utils/button_util.dart';
+import 'package:flutter_pokemon_pokedex/utils/image_util.dart';
 
 class PokedexBody extends StatefulWidget {
   const PokedexBody({super.key});
@@ -29,8 +29,9 @@ class _PokedexBodyState extends State<PokedexBody> {
           buildElevatedButton(context, 'Elevated Button', onPressed: () {}),
           buildOutlinedButton(context, 'Outlined', onPressed: () {}),
           buildImages(context, 'assets/images/kucing.jpg',
-              width: 60, height: 60, rounded: 8),
-          buildAvatar(context, 'assets/images/kucing.jpg', title: 'HELLOW')
+              width: 60, height: 60, rounded: 8, shadow: true),
+          buildAvatar(context, 'https://picsum.photos/seed/picsum/200/300', title: 'AS',),
+         
         ],
       ),
     );
