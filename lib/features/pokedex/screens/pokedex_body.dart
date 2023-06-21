@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pokemon_pokedex/utils/widget_util.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_pokemon_pokedex/utils/button_util.dart';
 import 'package:flutter_pokemon_pokedex/utils/image_util.dart';
@@ -48,6 +49,7 @@ class _PokedexBodyState extends State<PokedexBody> {
               textStyle: const TextStyle(fontSize: 25),
             ),
           ),
+          buildIconSVG(context, 'assets/svg/icon-role.svg', size: 20)
         ],
       ),
     );
