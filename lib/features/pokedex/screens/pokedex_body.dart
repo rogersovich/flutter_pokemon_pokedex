@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_pokemon_pokedex/utils/button_util.dart';
 import 'package:flutter_pokemon_pokedex/utils/image_util.dart';
 
@@ -28,10 +29,25 @@ class _PokedexBodyState extends State<PokedexBody> {
           buildTextButton(context, 'Submit Gass', onPressed: () {}),
           buildElevatedButton(context, 'Elevated Button', onPressed: () {}),
           buildOutlinedButton(context, 'Outlined', onPressed: () {}),
-          buildImages(context, 'assets/images/kucing.jpg',
-              width: 60, height: 60, rounded: 8, shadow: true),
-          buildAvatar(context, 'https://picsum.photos/seed/picsum/200/300', title: 'AX',),
-         
+          buildAvatar(
+            context,
+            'https://picsum.photos/seed/picsum/200/300',
+            title: 'AX',
+          ),
+          const Text(
+            'FONT DEFAULT',
+            style: TextStyle(fontSize: 25),
+          ),
+          const Text(
+            'FONT LOCAL',
+            style: TextStyle(fontSize: 25, fontFamily: 'Nunito'),
+          ),
+          Text(
+            'FONT ONLINE',
+            style: GoogleFonts.lora(
+              textStyle: const TextStyle(fontSize: 25),
+            ),
+          ),
         ],
       ),
     );

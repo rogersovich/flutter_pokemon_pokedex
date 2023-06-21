@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_pokemon_pokedex/constants/color_constant.dart';
 
 import 'constants/app_constant.dart';
-import 'constants/font_constant.dart';
 
 ThemeData customTheme() {
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
-    fontFamily: FontConstants.robotoRegular,
+    fontFamily: 'Shadows Into Light', // Setting Font Local Theme
     appBarTheme: appBarTheme(),
     textTheme: textTheme(),
     inputDecorationTheme: inputDecorationTheme(),
