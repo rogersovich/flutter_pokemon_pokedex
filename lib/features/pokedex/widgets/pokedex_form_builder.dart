@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_pokemon_pokedex/size_config.dart';
 import 'package:flutter_pokemon_pokedex/utils/button_util.dart';
+import 'package:flutter_pokemon_pokedex/utils/text_field_util.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:flutter_pokemon_pokedex/features/pokedex/models/pokedex_form_data_model.dart';
 
@@ -31,24 +32,12 @@ class _PokedexFormBuilderState extends State<PokedexFormBuilder> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: FormBuilderTextField(
-                name: 'name',
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  hintText: 'Input Name',
-                  contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 0.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-                validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.required(
-                      errorText: 'Nama Harus di isi'),
-                ]),
-              ),
-            ),
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: CustomFormTextField(
+                  key: const Key('field-name'),
+                  name: 'name',
+                  
+                )),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: FormBuilderTextField(
