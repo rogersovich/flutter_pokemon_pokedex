@@ -1,15 +1,15 @@
-//* IMAGE
 import 'package:flutter/material.dart';
 import 'package:flutter_pokemon_pokedex/constants/color_constant.dart';
 import 'package:flutter_pokemon_pokedex/size_config.dart';
 
-Widget buildImages(BuildContext context, String url,
+//* IMAGE
+Widget buildImg(BuildContext context, String url,
     {double width = 50,
     double height = 50,
     BoxFit fit = BoxFit.cover,
     bool shadow = false,
     Color? shadowColor,
-    double? rounded}) {
+    double rounded = 0}) {
   double widthImg = getProportionateScreenHeight(context, width);
   double heightImg = getProportionateScreenHeight(context, height);
   final isImageOnline = Uri.tryParse(url)?.hasScheme == true;
@@ -29,7 +29,7 @@ Widget buildImages(BuildContext context, String url,
           : null,
     ),
     child: ClipRRect(
-      borderRadius: BorderRadius.circular(rounded!),
+      borderRadius: BorderRadius.circular(rounded),
       child: isImageOnline
           ? Image.network(
               url,
@@ -47,7 +47,7 @@ Widget buildImages(BuildContext context, String url,
               },
             )
           : Image.asset(
-              url,
+              "assets/images/$url",
               width: widthImg,
               height: heightImg,
               fit: fit,
@@ -110,7 +110,7 @@ Widget buildAvatar(BuildContext context, String url,
                     },
                   )
                 : Image.asset(
-                    url,
+                    "assets/images/$url",
                     width: sizeAvatar,
                     height: sizeAvatar,
                     fit: fit,
