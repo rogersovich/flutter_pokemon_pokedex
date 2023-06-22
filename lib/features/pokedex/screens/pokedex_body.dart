@@ -26,16 +26,15 @@ class _PokedexBodyState extends State<PokedexBody> {
         color: Colors.white,
         width: double.infinity,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
+                width: double.infinity,
                 padding: EdgeInsets.symmetric(
-                  horizontal: getProportionateScreenHeight(context, 8),
-                  vertical: getProportionateScreenHeight(context, 4)
-                ),
-                child: buildTextNormal(context, 'Form Register',
-                    weight: FontWeight.w700, fontSize: 10)),
+                    horizontal: getProportionateScreenHeight(context, 8),
+                    vertical: getProportionateScreenHeight(context, 4)),
+                child: buildTextNormal(context, 'Form Register kucing merah is good no want to get you out bitch',
+                    weight: 'w700', fontSize: 10,)),
             PokedexFormBuilder(onSubmit: _handleSubmit)
           ],
         ),
