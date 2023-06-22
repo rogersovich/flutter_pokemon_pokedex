@@ -6,7 +6,7 @@ import 'constants/app_constant.dart';
 ThemeData customTheme() {
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
-    fontFamily: 'Shadows Into Light', // Setting Font Local Theme
+    fontFamily: 'Nunito', // Setting Font Local Theme
     appBarTheme: appBarTheme(),
     textTheme: textTheme(),
     inputDecorationTheme: inputDecorationTheme(),

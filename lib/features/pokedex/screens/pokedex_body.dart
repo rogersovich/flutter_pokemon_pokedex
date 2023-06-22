@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_pokemon_pokedex/constants/color_constant.dart';
-import 'package:flutter_pokemon_pokedex/utils/icons_util.dart';
-// import 'package:flutter_pokemon_pokedex/utils/widget_util.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_pokemon_pokedex/utils/button_util.dart';
+import 'package:flutter_pokemon_pokedex/features/pokedex/models/pokedex_form_data_model.dart';
+import 'package:flutter_pokemon_pokedex/features/pokedex/widgets/pokedex_form_builder.dart';
+import 'package:flutter_pokemon_pokedex/size_config.dart';
+import 'package:flutter_pokemon_pokedex/utils/text_util.dart';
 
 class PokedexBody extends StatefulWidget {
   const PokedexBody({super.key});
@@ -13,46 +12,33 @@ class PokedexBody extends StatefulWidget {
 }
 
 class _PokedexBodyState extends State<PokedexBody> {
+  void _handleSubmit(FormDataModel formData) {
+    Map<String, dynamic> json = formData.toJson();
+    print(json);
+    // Handle form submission here
+    // You can use the formData object to access the form data
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          buildTextButton(
-            context,
-            'Submit Icon',
-            icon: Icons.access_alarm,
-            onPressed: () {},
-          ),
-          buildTextButton(context, 'Submit Gass', onPressed: () {}),
-          buildElevatedButton(context, 'Elevated Button', onPressed: () {}),
-          buildOutlinedButton(context, 'Outlined', onPressed: () {}),
-
-          const Text(
-            'FONT DEFAULT',
-            style: TextStyle(fontSize: 25),
-          ),
-          const Text(
-            'FONT LOCAL',
-            style: TextStyle(fontSize: 25, fontFamily: 'Nunito'),
-          ),
-          Text(
-            'FONT ONLINE',
-            style: GoogleFonts.lora(
-              textStyle: const TextStyle(fontSize: 25),
-            ),
-          ),
-          buildIconSVG(context,
-              'https://www.svgrepo.com/show/396477/fire-extinguisher.svg',
-              size: 50),
-          buildIconSVG(context, 'icon-role.svg',
-              size: 20, color: kPrimaryColor),
-          buildIcon(context, Icons.access_alarm)
-        ],
+    return SingleChildScrollView(
+      child: Container(
+        color: Colors.white,
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenHeight(context, 8),
+                  vertical: getProportionateScreenHeight(context, 4)
+                ),
+                child: buildTextNormal(context, 'Form Register',
+                    weight: FontWeight.w700, fontSize: 10)),
+            PokedexFormBuilder(onSubmit: _handleSubmit)
+          ],
+        ),
       ),
     );
   }
