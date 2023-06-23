@@ -22,7 +22,16 @@ class PokedexFormBuilder extends StatefulWidget {
 class _PokedexFormBuilderState extends State<PokedexFormBuilder> {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
 
-  @override
+  // Initially password is obscure
+  bool _obscureText = true;
+
+  // Toggles the password show status
+  void _togglePassVisibilty() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
   Widget build(BuildContext context) {
     return FormBuilder(
       key: _formKey,
@@ -36,10 +45,6 @@ class _PokedexFormBuilderState extends State<PokedexFormBuilder> {
                 child: CustomFormTextField(
                   key: const Key('field-name'),
                   name: 'name',
-                  suffixIcon: buildIconButton(context, Icons.remove_red_eye,
-                      size: 12, onPressed: () {}),
-                  prefixIcon: buildIconButton(context, Icons.abc,
-                      size: 16, onPressed: () {}),
                   validators: [
                     FormBuilderValidators.required(),
                   ],
@@ -58,17 +63,17 @@ class _PokedexFormBuilderState extends State<PokedexFormBuilder> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: FormBuilderTextField(
-                name: 'password',
-                decoration: const InputDecoration(labelText: 'Password'),
-                obscureText: true,
-                validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.required(),
-                  FormBuilderValidators.minLength(6),
-                ]),
-              ),
-            ),
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: CustomFormTextField(
+                  key: const Key('field-password'),
+                  name: 'password',
+                  obscureText: _obscureText,
+                  suffixIcon: buildIconButton(context, Icons.remove_red_eye,
+                      onPressed: _togglePassVisibilty),
+                  validators: [
+                    FormBuilderValidators.required(),
+                  ],
+                )),
             buildElevatedButton(context, 'Submit Form', onPressed: () {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();

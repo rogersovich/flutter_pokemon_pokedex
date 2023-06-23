@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_pokemon_pokedex/utils/text_util.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 class CustomFormTextField extends StatelessWidget {
@@ -10,6 +11,10 @@ class CustomFormTextField extends StatelessWidget {
   final Widget? prefixIcon;
   final bool? isFilled;
   final Color? fillColor;
+  final bool obscureText;
+  final bool isReadonly;
+  final bool isEnabled;
+  final String align;
   final List<FormFieldValidator>? validators;
 
   const CustomFormTextField({
@@ -21,6 +26,10 @@ class CustomFormTextField extends StatelessWidget {
     this.prefixIcon,
     this.isFilled = false,
     this.fillColor,
+    this.obscureText = false,
+    this.isReadonly = false,
+    this.isEnabled = true,
+    this.align = 'left',
     this.validators,
   }) : super(key: key);
 
@@ -29,6 +38,10 @@ class CustomFormTextField extends StatelessWidget {
     return FormBuilderTextField(
       key: key,
       name: name,
+      obscureText: obscureText,
+      readOnly: isReadonly,
+      enabled: isEnabled,
+      textAlign: getTextAlignFromString(align),
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,
