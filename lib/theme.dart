@@ -47,6 +47,12 @@ TextTheme textTheme() {
       labelMedium:
           const TextStyle(letterSpacing: AppConstants.defaultLetterSpacing),
       labelLarge:
+          const TextStyle(letterSpacing: AppConstants.defaultLetterSpacing),
+      displaySmall:
+          const TextStyle(letterSpacing: AppConstants.defaultLetterSpacing),
+      displayMedium:
+          const TextStyle(letterSpacing: AppConstants.defaultLetterSpacing),
+      displayLarge:
           const TextStyle(letterSpacing: AppConstants.defaultLetterSpacing));
 }
 

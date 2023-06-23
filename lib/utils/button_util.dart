@@ -13,6 +13,21 @@ Icon iconButtonCustom(BuildContext context, IconData icon, Color? color,
   );
 }
 
+//* ICON BUTTON
+IconButton buildIconButton(BuildContext context, IconData iconURL,
+    {required VoidCallback? onPressed,
+    double size = 12,
+    Color? color,
+    String? label}) {
+  return IconButton(
+      onPressed: onPressed,
+      icon: Icon(iconURL,
+          color: color ?? kPrimaryColor,
+          size: getProportionateScreenHeight(context, size),
+          semanticLabel: label));
+}
+
+//* TEXT BUTTON
 TextButton buildTextButton(BuildContext context, String text,
     {double rounded = 3,
     bool block = false,

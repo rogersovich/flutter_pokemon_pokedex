@@ -36,13 +36,21 @@ class _PokedexFormBuilderState extends State<PokedexFormBuilder> {
                 child: CustomFormTextField(
                   key: const Key('field-name'),
                   name: 'name',
-                  
+                  suffixIcon: buildIconButton(context, Icons.remove_red_eye,
+                      size: 12, onPressed: () {}),
+                  prefixIcon: buildIconButton(context, Icons.abc,
+                      size: 16, onPressed: () {}),
+                  validators: [
+                    FormBuilderValidators.required(),
+                  ],
                 )),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: FormBuilderTextField(
                 name: 'email',
-                decoration: const InputDecoration(labelText: 'Email'),
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                ),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(),
                   FormBuilderValidators.email(),

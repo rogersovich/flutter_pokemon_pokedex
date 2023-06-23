@@ -89,7 +89,7 @@ TextOverflow getTextOverflowFromString(String overflow) {
   }
 }
 
-Text buildTextNormal(BuildContext context, String text,
+Text buildTextCustom(BuildContext context, String text,
     {Color color = Colors.black,
     double fontSize = 8,
     String weight = 'normal',

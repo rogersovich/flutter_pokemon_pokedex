@@ -33,8 +33,12 @@ class _PokedexBodyState extends State<PokedexBody> {
                 padding: EdgeInsets.symmetric(
                     horizontal: getProportionateScreenHeight(context, 8),
                     vertical: getProportionateScreenHeight(context, 4)),
-                child: buildTextNormal(context, 'Form Register kucing merah is good no want to get you out bitch',
-                    weight: 'w700', fontSize: 10,)),
+                child: buildTextCustom(
+                  context,
+                  'Form Register kucing merah is good no want to get you out bitch',
+                  weight: 'w700',
+                  fontSize: 10,
+                )),
             PokedexFormBuilder(onSubmit: _handleSubmit)
           ],
         ),
