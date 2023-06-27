@@ -4,6 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 Color kPrimaryColor = HexColor('#2563eb');
 Color kWhiteColor = HexColor('#FFFFFF');
 Color kBlackColor = HexColor('#030712');
+Color kErrorColor = HexColor('#dc2626');
 Color kBorderColor = HexColor('#404040');
 Color kBorderColorActive = HexColor('#2563eb');
 Color kBorderColorError = HexColor('#dc2626');

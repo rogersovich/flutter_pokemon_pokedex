@@ -35,7 +35,7 @@ class _PokedexBodyState extends State<PokedexBody> {
                     vertical: getProportionateScreenHeight(context, 4)),
                 child: buildTextCustom(
                   context,
-                  'Form Register kucing merah is good no want to get you out bitch',
+                  'Form Register',
                   weight: 'w700',
                   fontSize: 10,
                 )),

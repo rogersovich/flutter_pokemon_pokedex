@@ -21,6 +21,9 @@ class PokedexFormBuilder extends StatefulWidget {
 
 class _PokedexFormBuilderState extends State<PokedexFormBuilder> {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
+  final _emailFieldKey = GlobalKey<FormBuilderFieldState>();
+
+  // List<String> dropdownItems = ['Option 1', 'Option 2', 'Option 3'];
 
   // Initially password is obscure
   bool _obscureText = true;
@@ -32,6 +35,7 @@ class _PokedexFormBuilderState extends State<PokedexFormBuilder> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return FormBuilder(
       key: _formKey,
@@ -41,25 +45,15 @@ class _PokedexFormBuilderState extends State<PokedexFormBuilder> {
         child: Column(
           children: [
             Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: CustomFormTextField(
-                  key: const Key('field-name'),
-                  name: 'name',
-                  validators: [
-                    FormBuilderValidators.required(),
-                  ],
-                )),
-            Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              child: FormBuilderTextField(
+              child: CustomFormTextField(
+                key: _emailFieldKey,
                 name: 'email',
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                ),
-                validator: FormBuilderValidators.compose([
+                labelText: 'Email',
+                validators: [
                   FormBuilderValidators.required(),
                   FormBuilderValidators.email(),
-                ]),
+                ],
               ),
             ),
             Padding(
@@ -74,15 +68,18 @@ class _PokedexFormBuilderState extends State<PokedexFormBuilder> {
                     FormBuilderValidators.required(),
                   ],
                 )),
-            buildElevatedButton(context, 'Submit Form', onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                FormDataModel formData = FormDataModel(
-                  name: _formKey.currentState!.value['name'],
-                );
-                widget.onSubmit(formData);
-              }
-            })
+            Align(
+              alignment: Alignment.centerRight,
+              child: buildElevatedButton(context, 'Submit Form', onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  _formKey.currentState!.save();
+                  FormDataModel formData = FormDataModel(
+                    name: _formKey.currentState!.value['name'],
+                  );
+                  widget.onSubmit(formData);
+                }
+              }),
+            )
           ],
         ),
       ),
