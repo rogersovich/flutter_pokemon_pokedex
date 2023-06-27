@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_pokemon_pokedex/constants/color_constant.dart';
 import 'package:flutter_pokemon_pokedex/size_config.dart';
 import 'package:flutter_pokemon_pokedex/utils/button_util.dart';
+import 'package:flutter_pokemon_pokedex/utils/dropdown_util.dart';
 import 'package:flutter_pokemon_pokedex/utils/text_field_util.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:flutter_pokemon_pokedex/features/pokedex/models/pokedex_form_data_model.dart';
@@ -23,7 +25,7 @@ class _PokedexFormBuilderState extends State<PokedexFormBuilder> {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
   final _emailFieldKey = GlobalKey<FormBuilderFieldState>();
 
-  // List<String> dropdownItems = ['Option 1', 'Option 2', 'Option 3'];
+  List<String> dropdownItems = ['Option 1', 'Option 2', 'Option 3'];
 
   // Initially password is obscure
   bool _obscureText = true;
@@ -44,6 +46,26 @@ class _PokedexFormBuilderState extends State<PokedexFormBuilder> {
             horizontal: getProportionateScreenHeight(context, 8)),
         child: Column(
           children: [
+            Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: CustomFormDropdown(
+                  key: const Key('field-dropdown'),
+                  name: 'dropdown',
+                  validators: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
+                  ]),
+                  options: dropdownItems
+                      .map<DropdownMenuItem<String>>((String item) {
+                    return DropdownMenuItem<String>(
+                      value: item,
+                      child: Text(
+                        item,
+                        style:
+                            TextStyle(color: Colors.black), // Custom text style
+                      ),
+                    );
+                  }).toList(),
+                )),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: CustomFormTextField(
