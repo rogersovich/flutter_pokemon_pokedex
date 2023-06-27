@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_pokemon_pokedex/constants/color_constant.dart';
 import 'package:flutter_pokemon_pokedex/size_config.dart';
-import 'package:flutter_pokemon_pokedex/utils/text_util.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 
 class CustomFormDropdown extends StatelessWidget {
   final String name;
